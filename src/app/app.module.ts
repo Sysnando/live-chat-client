@@ -1,16 +1,15 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, Injector } from '@angular/core';
 import { FormsModule  } from "@angular/forms";
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
-
-import { ChatComponent } from './chat.component';
+import { AppComponent } from './app.component';
 import { environment } from 'src/environments/environment';
 
 const config: SocketIoConfig = { url: environment.chat_server_host, options: {} };
 
 @NgModule({
   declarations: [
-    ChatComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
@@ -18,7 +17,7 @@ const config: SocketIoConfig = { url: environment.chat_server_host, options: {} 
     SocketIoModule.forRoot(config)
   ],
   providers: [],
-  bootstrap: [ChatComponent]
+  bootstrap: [AppComponent]
 })
-export class ChatModule { }
+export class AppModule {}
 

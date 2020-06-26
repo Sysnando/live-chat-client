@@ -1,0 +1,52 @@
+import { Component, OnInit } from '@angular/core';
+import { AppService, ChatMessage } from './app.service';
+import { formatDate } from '@angular/common';
+
+@Component({
+  selector: 'chat-client',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent implements OnInit {
+  chatVariables: any;  
+  online: number = 0;
+  chatMsg: ChatMessage;
+  chatMsgList: ChatMessage[] = [];
+
+  constructor(private chatService: AppService) {}
+
+  ngOnInit() {
+
+    //0. join a chat room
+    this.chatVariables = window['LIVE_CHAT'];
+
+    console.log('chatVariables', this.chatVariables)
+
+    if(this.chatVariables) {
+      this.chatMsg = new ChatMessage(this.chatVariables.event_id, this.chatVariables.user_name);
+      this.chatService.joinChatRoom(this.chatMsg);
+  
+      //1. new chat messsages listener
+      this.chatService
+        .getMessages(this.chatMsg)
+        .subscribe((message) => {   
+          this.chatMsgList.push(message);
+        });
+  
+      //2. online users count listener
+      this.chatService
+        .getOnline(this.chatMsg)
+        .subscribe((online) => {   
+          this.online = online;
+        });
+    }
+  }
+
+  sendMessage(){
+    if(this.chatMsg) {
+      this.chatMsg.time = formatDate(new Date(), 'hh:mm',  'en-US');
+      this.chatService.sendMessage(this.chatMsg);
+    }
+    this.chatMsg.clean();  
+  }
+}
