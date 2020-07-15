@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  chat_server_host: 'http://localhost:3000'
+  chat_server_host: 'http://localhost:3000',
+  variables: {event_id: 1456, user_name: "user cool", assets_url: 'http://localhost:4200/'}
 };
 
 /*

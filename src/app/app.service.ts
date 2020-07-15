@@ -13,12 +13,13 @@ export class AppService {
   }
 
   public joinChatRoom(chatMsg: ChatMessage) {
+    console.log(this.socket)
     this.socket.emit('join', chatMsg);
   }
 
   public getMessages = (chatMsg) => {
     return Observable.create((observer) => {
-      this.socket.on(chatMsg.name, (message) => {
+      this.socket.on(chatMsg.room, (message) => {
         observer.next(message);
       });
     });
@@ -26,7 +27,7 @@ export class AppService {
 
   public getOnline = (chatMsg) => {
     return Observable.create((observer) => {
-      this.socket.on(chatMsg.name + '-online-users', (online) => {
+      this.socket.on(chatMsg.room + '-online-users', (online) => {
         observer.next(online);
       });
     });
@@ -34,7 +35,7 @@ export class AppService {
 }
 
 export class ChatMessage {
-  name: string;
+  room: string;
   user: string;
   
   color: string;
@@ -42,7 +43,7 @@ export class ChatMessage {
   msg: string;
 
   constructor(eventId, user) {
-    this.name = eventId;
+    this.room = eventId;
     this.user = user;
     this.color = this.getRandomColor(5);
     this.msg = '';

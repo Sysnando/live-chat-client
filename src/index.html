@@ -16,6 +16,22 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
-  <chat-client></chat-client>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-9" >	        
+        <video controls style="width:100%;">
+          <source src="https://www.youtube.com/embed/tgbNymZ7vqY?playlist=tgbNymZ7vqY&loop=1" type="video/mp4">
+        </video>
+      </div>
+      <div class="col-3">
+        <chat-client></chat-client>
+      </div>
+    </div>
+  </div>
+  <script>
+    function resizeIframe(obj) {
+      obj.style.height = obj.contentWindow.document.documentElement.scrollHeight + 'px';
+    }
+  </script>
 </body>
 </html>

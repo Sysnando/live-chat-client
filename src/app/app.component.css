@@ -18,14 +18,16 @@
     }
 }
 
-.container-fluid {
+.container {
     color: #6f7680;
-    padding: 1rem;
+    height: 87%;
 }
 
 .row.live-chat-header {
-    padding: 1rem;
+    padding: 16px 5px 0px 16px;
     background-color: #1e1e1e;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
 }
 
 .col.online {
@@ -41,10 +43,18 @@
 
 .row.live-chat-messages {
     background-color: #1e1e1e;    
+    font-weight: 500;    
     min-height: 50px;
     overflow-x: hidden;
-    padding: 1rem;
-    font-weight: 500;
+    padding: 16px;
+}
+.row.live-chat-messages.body{
+    align-content: start;
+    height: 76%;
+}
+.row.live-chat-messages.bottom{
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
 }
 
 .row.live-chat-messages span {
@@ -52,7 +62,7 @@
 }
 
 .live-chat-input-text  {
-    padding: 1rem;
+    padding: 16px;
     color: #fbf8f8;
     background-color: #1e1e1e;
     border: solid 0.1px #495057;
@@ -63,9 +73,14 @@
 }
 
 .live-chat-link-login {
-    padding: 1rem;    
+    padding: 16px;    
+    margin: 0
 }
 
 .live-chat-link-login a {
     color: orange;
+}
+
+.live-chat-link-login span {
+    font-size: 12px;
 }
