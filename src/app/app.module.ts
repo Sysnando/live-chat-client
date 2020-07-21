@@ -4,6 +4,7 @@ import { FormsModule  } from "@angular/forms";
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 import { AppComponent } from './app.component';
 import { environment } from 'src/environments/environment';
+import { HttpClientModule } from '@angular/common/http';
 
 const config: SocketIoConfig = { url: environment.chat_server_host, options: {} };
 
@@ -14,6 +15,7 @@ const config: SocketIoConfig = { url: environment.chat_server_host, options: {} 
   imports: [
     BrowserModule,
     FormsModule,
+    HttpClientModule,
     SocketIoModule.forRoot(config)
   ],
   providers: [],

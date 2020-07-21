@@ -42,6 +42,13 @@ export class AppComponent implements OnInit {
         .subscribe((online) => {   
           this.online = online;
         });
+
+      //3. get historic msgs
+      this.chatService
+        .findAllMsgs(this.chatMsg.room)
+        .subscribe(msgs =>
+          this.chatMsgList = msgs
+        );
     }
   }
 

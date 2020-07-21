@@ -24,7 +24,7 @@
 }
 
 .row.live-chat-header {
-    padding: 16px 5px 0px 16px;
+    padding: 16px 5px 10px 16px;
     background-color: #1e1e1e;
     border-top-left-radius: 12px;
     border-top-right-radius: 12px;
@@ -48,6 +48,14 @@
     overflow-x: hidden;
     padding: 16px;
 }
+.row.live-chat-messages::-webkit-scrollbar{
+    width: 10px;
+}
+
+.row.live-chat-messages::-webkit-scrollbar-thumb {
+    background: #888; 
+}
+
 .row.live-chat-messages.body{
     align-content: start;
     height: 76%;

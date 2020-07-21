@@ -1,23 +1,25 @@
 import { Injectable } from '@angular/core';
 import { Socket } from 'ngx-socket-io';
 import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AppService {
-  constructor(private socket: Socket) { }
+  constructor(private socket: Socket, private http: HttpClient) { }
 
-  public sendMessage(chatMsg: ChatMessage) {
+  private msgUrl = 'http://localhost:3000/api/msgs';
+
+  sendMessage(chatMsg: ChatMessage) {
     this.socket.emit('message', chatMsg);
   }
 
-  public joinChatRoom(chatMsg: ChatMessage) {
-    console.log(this.socket)
+  joinChatRoom(chatMsg: ChatMessage) {
     this.socket.emit('join', chatMsg);
   }
 
-  public getMessages = (chatMsg) => {
+  getMessages = (chatMsg) => {
     return Observable.create((observer) => {
       this.socket.on(chatMsg.room, (message) => {
         observer.next(message);
@@ -25,12 +27,16 @@ export class AppService {
     });
   }
 
-  public getOnline = (chatMsg) => {
+  getOnline = (chatMsg) => {
     return Observable.create((observer) => {
       this.socket.on(chatMsg.room + '-online-users', (online) => {
         observer.next(online);
       });
     });
+  }
+
+  findAllMsgs(chatRoom: string) : Observable<ChatMessage[]> {
+    return this.http.get<any[]>(this.msgUrl);
   }
 }
 
