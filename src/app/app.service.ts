@@ -37,11 +37,7 @@ export class AppService {
   }
 
   findAllMsgs(chatRoom: string) : Observable<ChatMessage[]> {
-    return this.http.get<any[]>(this.msgUrl, {
-      params: {
-        room: chatRoom
-      }
-    });
+    return this.http.get<any[]>(this.msgUrl + chatRoom);
   }
 }
 
