@@ -8,8 +8,8 @@
       <span> {{online}} Online</span>
     </div>
   </div>
-  <div class="row live-chat-messages body align-items-start">    
-    <div *ngFor="let chatMsg of chatMsgList" class="w-100">
+  <div class="row live-chat-messages body align-items-start container-size" id="divMsg">    
+    <div *ngFor="let chatMsg of chatMsgList" class="w-100" id="current_msg">
       <span class="user-message" [style.color]="chatMsg.color">{{chatMsg.user}}</span><span>{{chatMsg.time}}</span> <span>{{chatMsg.msg}}</span>
     </div> 
   </div>

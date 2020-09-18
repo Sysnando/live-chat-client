@@ -56,6 +56,10 @@ export class AppComponent implements OnInit {
     if(this.chatMsg && this.chatMsg.msg.length > 0) {
       this.chatMsg.time = formatDate(new Date(), 'hh:mm',  'en-US');
       this.chatService.sendMessage(this.chatMsg);
+
+      //move focus to the last msg
+      var objDiv = document.getElementById("divMsg");
+      objDiv.scrollTop = objDiv.scrollHeight;
     }
     this.chatMsg.clean();  
   }

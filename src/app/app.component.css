@@ -6,6 +6,11 @@
     .bookmark {
         width: 10px;
     }
+
+    .container-size {
+        max-height: 500px;
+        min-height: 500px;
+    }
 }
   
 /* If the screen size is 600px wide or less, set the font-size of <div> to 30px */
@@ -16,11 +21,16 @@
     .bookmark {
         width: 7px;        
     }
+    .container-size {
+        max-height: 246px;
+        min-height: 246px;
+    }
 }
 
 .container {
     color: #6f7680;
     height: 87%;
+    
 }
 
 .row.live-chat-header {
@@ -44,7 +54,7 @@
 .row.live-chat-messages {
     background-color: #1e1e1e;    
     font-weight: 500;    
-    min-height: 50px;
+    /*min-height: 50px;*/
     overflow-x: hidden;
     padding: 16px;
 }
@@ -58,7 +68,7 @@
 
 .row.live-chat-messages.body{
     align-content: start;
-    height: 76%;
+    /*height: 76%;*/
 }
 .row.live-chat-messages.bottom{
     border-bottom-left-radius: 12px;
