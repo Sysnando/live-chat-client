@@ -80,10 +80,11 @@
 }
 
 .live-chat-input-text  {
-    padding: 16px;
-    color: #fbf8f8;
     background-color: #1e1e1e;
     border: solid 0.1px #495057;
+    color: #fbf8f8;
+    font-size: 12px;
+    padding: 16px;
 }
 
 .live-chat-input-button  {

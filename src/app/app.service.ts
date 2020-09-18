@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Socket } from 'ngx-socket-io';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { environment } from '../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,7 @@ import { HttpClient } from '@angular/common/http';
 export class AppService {
   constructor(private socket: Socket, private http: HttpClient) { }
 
-  private msgUrl = 'http://localhost:3000/api/msgs';
+  private msgUrl = environment.chat_server_host + '/api/msgs/';
 
   sendMessage(chatMsg: ChatMessage) {
     this.socket.emit('message', chatMsg);
@@ -36,7 +37,7 @@ export class AppService {
   }
 
   findAllMsgs(chatRoom: string) : Observable<ChatMessage[]> {
-    return this.http.get<any[]>(this.msgUrl);
+    return this.http.get<any[]>(this.msgUrl + chatRoom);
   }
 }
 
